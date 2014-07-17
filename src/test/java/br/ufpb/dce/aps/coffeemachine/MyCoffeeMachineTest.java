@@ -10,4 +10,5 @@ public class MyCoffeeMachineTest extends CoffeeMachineTest{
 		return new MyCoffeeMachine(factory);
 
 	}
+	
 }
