@@ -23,7 +23,7 @@ public class MyCoffeeMachine implements CoffeeMachine {
 	public void insertCoin(Coin coin) {
 		int valorTotal = coin.getValue();
 		int dolar = valorTotal /100;
-	    int decCent = valorTotal % 100;
+	        int decCent = valorTotal % 100;
 		this.factory.getDisplay().info ("Total: US$ "+dolar+"." + decCent);
 	}
 
