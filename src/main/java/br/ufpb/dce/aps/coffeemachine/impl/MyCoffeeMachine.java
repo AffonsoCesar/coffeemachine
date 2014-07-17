@@ -26,7 +26,9 @@ public class MyCoffeeMachine implements CoffeeMachine {
 	    int decCent = valorTotal % 100;
 		this.factory.getDisplay().info ("Total: US$ "+dolar+"." + decCent);
 	}
+
 }
+
 
 	
 
