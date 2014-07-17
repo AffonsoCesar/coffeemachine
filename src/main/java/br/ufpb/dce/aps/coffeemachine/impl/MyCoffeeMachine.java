@@ -26,7 +26,7 @@ public class MyCoffeeMachine implements CoffeeMachine {
 		
 		try {
 			dolar = dolar + coin.getValue() / 100;
-			decCent = decCent + coin.getValue() % 100;;
+			decCent = decCent + coin.getValue() % 100;
 			factory.getDisplay().info ("Total: US$ "+dolar+"." + decCent);
 		}
 		
@@ -35,8 +35,9 @@ public class MyCoffeeMachine implements CoffeeMachine {
 		}
 	}
 	
+	public void cancel() {
+		if (dolar == 0 && decCent == 0) {
+			throw new CoffeeMachineException("Nenhuma Moeda Inserida na Máquina!");
+		}
+	}
 }
-
-
-	
-
