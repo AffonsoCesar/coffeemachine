@@ -1,9 +1,12 @@
 package br.ufpb.dce.aps.coffeemachine.impl;
 
+import org.mockito.InOrder;
+
 import br.ufpb.dce.aps.coffeemachine.CoffeeMachine;
 import br.ufpb.dce.aps.coffeemachine.CoffeeMachineException;
 import br.ufpb.dce.aps.coffeemachine.Coin;
 import br.ufpb.dce.aps.coffeemachine.ComponentsFactory;
+import br.ufpb.dce.aps.coffeemachine.Messages;
 import br.ufpb.dce.aps.coffeemachine.MockComponentsFactory;
 
 public class MyCoffeeMachine implements CoffeeMachine {
@@ -35,9 +38,17 @@ public class MyCoffeeMachine implements CoffeeMachine {
 		}
 	}
 	
+	
 	public void cancel() {
-		if (dolar == 0 && decCent == 0) {
+		
+			if (dolar == 0 && decCent == 0) {
 			throw new CoffeeMachineException("Nenhuma Moeda Inserida na Máquina!");
 		}
+			else  {	
+			factory.getDisplay().warn("Cancelling drink. Please, get your coins.");
+			factory.getCashBox().release(Coin.halfDollar);
+			factory.getDisplay().info("Insert coins and select a drink!");
+			}
 	}
+
 }
