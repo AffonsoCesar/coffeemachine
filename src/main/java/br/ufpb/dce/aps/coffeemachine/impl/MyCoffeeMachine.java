@@ -1,11 +1,14 @@
 package br.ufpb.dce.aps.coffeemachine.impl;
 
+import static org.mockito.Matchers.anyDouble;
+
 import org.mockito.InOrder;
 
 import br.ufpb.dce.aps.coffeemachine.CoffeeMachine;
 import br.ufpb.dce.aps.coffeemachine.CoffeeMachineException;
 import br.ufpb.dce.aps.coffeemachine.Coin;
 import br.ufpb.dce.aps.coffeemachine.ComponentsFactory;
+import br.ufpb.dce.aps.coffeemachine.Drink;
 import br.ufpb.dce.aps.coffeemachine.Messages;
 import br.ufpb.dce.aps.coffeemachine.MockComponentsFactory;
 
@@ -53,6 +56,21 @@ public class MyCoffeeMachine implements CoffeeMachine {
 			factory.getCashBox().release(Coin.quarter);
 			factory.getDisplay().info("Insert coins and select a drink!");
 			}
+	}
+
+	public void select(Drink drink) {
+		
+		this.factory.getCupDispenser().contains(1);
+		this.factory.getWaterDispenser().contains(anyDouble());
+		this.factory.getCoffeePowderDispenser().contains(anyDouble());
+		this.factory.getDisplay().info("Mixing ingredients.");
+		this.factory.getCoffeePowderDispenser().release(anyDouble());
+		this.factory.getWaterDispenser().release(anyDouble());
+		this.factory.getDisplay().info("Releasing drink.");
+		this.factory.getCupDispenser().release(1);
+		this.factory.getDrinkDispenser().release(anyDouble());
+		this.factory.getDisplay().info("Please, take your drink.");
+		this.factory.getDisplay().info("Insert coins and select a drink!");
 	}
 
 }
