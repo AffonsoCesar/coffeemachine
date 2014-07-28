@@ -1,6 +1,8 @@
 package br.ufpb.dce.aps.coffeemachine.impl;
 
 
+import static org.mockito.Matchers.anyDouble;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,14 +57,19 @@ public class MyCoffeeMachine implements CoffeeMachine {
 				}
 			}
 			this.factory.getDisplay().info("Insert coins and select a drink!");
-
 	}
 
 	public void select(Drink drink) {
 		
+		
 		this.factory.getCupDispenser().contains(1);
 		this.factory.getWaterDispenser().contains(0.1);
-		this.factory.getCoffeePowderDispenser().contains(0.1);
+		this.factory.getCoffeePowderDispenser().contains(anyDouble());
+		
+		//if (drink == Drink.BLACK) {
+		//this.factory.getCoffeePowderDispenser().contains(anyDouble());
+		//this.factory.getDisplay().warn("Out of Coffee Powder");
+		//}
 			
 		if (drink == Drink.BLACK_SUGAR) {
 		this.factory.getSugarDispenser().contains(0.1);
