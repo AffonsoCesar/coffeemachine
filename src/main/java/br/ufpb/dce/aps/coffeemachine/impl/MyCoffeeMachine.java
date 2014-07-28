@@ -20,11 +20,8 @@ public class MyCoffeeMachine implements CoffeeMachine {
     int dolar =0;
     int decCent=0;
 	private List <Coin> coins = new ArrayList<Coin>();
-
-	public void init() {
-		factory = new MockComponentsFactory();
-		
-	}
+	
+	
 	
 	public MyCoffeeMachine(ComponentsFactory factory) {
 		this.factory = factory;
@@ -47,12 +44,12 @@ public class MyCoffeeMachine implements CoffeeMachine {
 	
 	
 	public void cancel() {
-		
+
 			if (dolar == 0 && decCent == 0) {
 				throw new CoffeeMachineException("Nenhuma Moeda Inserida na Máquina!");
 		}
-			factory.getDisplay().warn("Cancelling drink. Please, get your coins.");
 			
+			factory.getDisplay().warn("Cancelling drink. Please, get your coins.");
 			for (Coin ord: Coin.reverse()) {
 				for (Coin e: coins) {
 					if (ord == e)
@@ -87,6 +84,7 @@ public class MyCoffeeMachine implements CoffeeMachine {
 		this.factory.getDrinkDispenser().release(0.1);
 		this.factory.getDisplay().info("Please, take your drink.");
 		this.factory.getDisplay().info("Insert coins and select a drink!");
+		coins.clear();
 	}
   
 }
