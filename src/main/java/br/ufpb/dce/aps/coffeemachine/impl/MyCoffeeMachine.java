@@ -1,6 +1,5 @@
 package br.ufpb.dce.aps.coffeemachine.impl;
 
-import static org.mockito.Matchers.anyDouble;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,6 @@ import br.ufpb.dce.aps.coffeemachine.CoffeeMachineException;
 import br.ufpb.dce.aps.coffeemachine.Coin;
 import br.ufpb.dce.aps.coffeemachine.ComponentsFactory;
 import br.ufpb.dce.aps.coffeemachine.Drink;
-import br.ufpb.dce.aps.coffeemachine.MockComponentsFactory;
 
 public class MyCoffeeMachine implements CoffeeMachine {
 
