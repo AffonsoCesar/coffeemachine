@@ -19,7 +19,7 @@ public class MyCoffeeMachine implements CoffeeMachine {
 	private ComponentsFactory factory;
     int dolar =0;
     int decCent=0;
-    private List <Coin> coins = new ArrayList();
+	private List <Coin> coins = new ArrayList<Coin>();
 
 	public void init() {
 		factory = new MockComponentsFactory();
@@ -65,21 +65,28 @@ public class MyCoffeeMachine implements CoffeeMachine {
 
 	public void select(Drink drink) {
 		
-		if (this.factory.getCupDispenser().contains(1)) {
-			this.factory.getWaterDispenser().contains(anyDouble());
-			this.factory.getCoffeePowderDispenser().contains(anyDouble());
-			this.factory.getDisplay().info("Mixing ingredients.");
-			this.factory.getCoffeePowderDispenser().release(anyDouble());
-			this.factory.getWaterDispenser().release(anyDouble());
-			this.factory.getDisplay().info("Releasing drink.");
-			this.factory.getCupDispenser().release(1);
-			this.factory.getDrinkDispenser().release(anyDouble());
+		this.factory.getCupDispenser().contains(1);
+		this.factory.getWaterDispenser().contains(0.1);
+		this.factory.getCoffeePowderDispenser().contains(0.1);
+			
+		if (drink == Drink.BLACK_SUGAR) {
+		this.factory.getSugarDispenser().contains(0.1);
 		}
-		else if (this.factory.getSugarDispenser().contains(2)) {
-			this.factory.getSugarDispenser().contains(anyDouble());
+		
+		this.factory.getDisplay().info("Mixing ingredients.");
+		this.factory.getCoffeePowderDispenser().release(0.1);
+		this.factory.getWaterDispenser().release(0.1);
+		
+		if (drink == Drink.BLACK_SUGAR) {
+			this.factory.getSugarDispenser().release(0.1);
 		}
+		
+		
+		this.factory.getDisplay().info("Releasing drink.");
+		this.factory.getCupDispenser().release(1);
+		this.factory.getDrinkDispenser().release(0.1);
 		this.factory.getDisplay().info("Please, take your drink.");
 		this.factory.getDisplay().info("Insert coins and select a drink!");
 	}
-
+  
 }
