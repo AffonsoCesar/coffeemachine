@@ -63,23 +63,26 @@ public class MyCoffeeMachine implements CoffeeMachine {
 		
 		
 		this.factory.getCupDispenser().contains(1);
-		this.factory.getWaterDispenser().contains(0.1);
-		this.factory.getCoffeePowderDispenser().contains(anyDouble());
+		this.factory.getWaterDispenser().contains(3);
 		
-		//if (drink == Drink.BLACK) {
-		//this.factory.getCoffeePowderDispenser().contains(anyDouble());
-		//this.factory.getDisplay().warn("Out of Coffee Powder");
-		//}
+		if(!this.factory.getCoffeePowderDispenser().contains(0.1)) {
+			this.factory.getDisplay().warn("Out of Coffee Powder");
+			this.factory.getCashBox().release(Coin.quarter);
+			this.factory.getCashBox().release(Coin.dime);
+			this.factory.getDisplay().info("Insert coins and select a drink!");
 			
-		if (drink == Drink.BLACK_SUGAR) {
-		this.factory.getSugarDispenser().contains(0.1);
+			
+		}
+		else {	
+			if (drink == Drink.BLACK_SUGAR) {
+				this.factory.getSugarDispenser().contains(0.1);
 		}
 		
-		this.factory.getDisplay().info("Mixing ingredients.");
-		this.factory.getCoffeePowderDispenser().release(0.1);
-		this.factory.getWaterDispenser().release(0.1);
+			this.factory.getDisplay().info("Mixing ingredients.");
+			this.factory.getCoffeePowderDispenser().release(0.1);
+			this.factory.getWaterDispenser().release(0.1);
 		
-		if (drink == Drink.BLACK_SUGAR) {
+			if (drink == Drink.BLACK_SUGAR) {
 			this.factory.getSugarDispenser().release(0.1);
 		}
 		
@@ -89,7 +92,8 @@ public class MyCoffeeMachine implements CoffeeMachine {
 		this.factory.getDrinkDispenser().release(0.1);
 		this.factory.getDisplay().info("Please, take your drink.");
 		this.factory.getDisplay().info("Insert coins and select a drink!");
-		coins.clear();
+		this.coins.clear();
+		}
 	}
-  
+	
 }
