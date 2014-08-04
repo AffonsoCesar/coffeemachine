@@ -1,8 +1,6 @@
 package br.ufpb.dce.aps.coffeemachine.impl;
 
 
-import static org.mockito.Matchers.anyDouble;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +18,6 @@ public class MyCoffeeMachine implements CoffeeMachine {
     int dolar =0;
     int decCent=0;
 	private List <Coin> coins = new ArrayList<Coin>();
-	
 	
 	
 	public MyCoffeeMachine(ComponentsFactory factory) {
@@ -77,6 +74,7 @@ public class MyCoffeeMachine implements CoffeeMachine {
 			return;
 		}
 		
+		
 		if(!this.factory.getCoffeePowderDispenser().contains(0.1)) {
 			this.factory.getDisplay().warn("Out of Coffee Powder");
 			this.factory.getCashBox().release(Coin.quarter);
@@ -101,9 +99,22 @@ public class MyCoffeeMachine implements CoffeeMachine {
 		}
 			
 		
+		if (drink == Drink.WHITE_SUGAR) {
+			this.factory.getCreamerDispenser().contains(0.1);
+			this.factory.getSugarDispenser().contains(0.1);
+			this.factory.getCashBox().count(Coin.dime);
+			this.factory.getCashBox().count(Coin.nickel);
+		}
+		
+		
 		this.factory.getDisplay().info("Mixing ingredients.");
 		this.factory.getCoffeePowderDispenser().release(0.1);
 		this.factory.getWaterDispenser().release(0.1);
+		
+		if (drink == Drink.WHITE_SUGAR) {
+			this.factory.getCreamerDispenser().release(0.1);
+			this.factory.getSugarDispenser().release(0.1);
+		}
 		
 		if (drink == Drink.WHITE) {
 			this.factory.getCreamerDispenser().release(0.1);
@@ -118,6 +129,11 @@ public class MyCoffeeMachine implements CoffeeMachine {
 		this.factory.getCupDispenser().release(1);
 		this.factory.getDrinkDispenser().release(0.1);
 		this.factory.getDisplay().info("Please, take your drink.");
+		if (drink == Drink.WHITE_SUGAR) {
+			this.factory.getCashBox().release(Coin.dime);
+			this.factory.getCashBox().release(Coin.nickel);
+		}
+		
 		this.factory.getDisplay().info("Insert coins and select a drink!");
 		this.coins.clear();
 		}
