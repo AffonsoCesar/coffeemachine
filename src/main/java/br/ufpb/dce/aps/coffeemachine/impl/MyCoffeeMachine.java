@@ -18,6 +18,7 @@ public class MyCoffeeMachine implements CoffeeMachine {
     int dolar =0;
     int decCent=0;
 	private List <Coin> coins = new ArrayList<Coin>();
+	private int VALUE = 35;
 	
 	
 	public MyCoffeeMachine(ComponentsFactory factory) {
@@ -81,8 +82,6 @@ public class MyCoffeeMachine implements CoffeeMachine {
 			this.factory.getCashBox().release(Coin.dime);
 			this.factory.getDisplay().info("Insert coins and select a drink!");
 			}
-
-		
 		
 		else {	
 			if (drink == Drink.BLACK_SUGAR) {
@@ -92,6 +91,7 @@ public class MyCoffeeMachine implements CoffeeMachine {
 				this.factory.getDisplay().info("Insert coins and select a drink!");
 				return;
 				}
+					
 		}
 		if (drink == Drink.WHITE) {
 			this.factory.getCreamerDispenser().contains(0.1);
@@ -105,7 +105,7 @@ public class MyCoffeeMachine implements CoffeeMachine {
 			this.factory.getCashBox().count(Coin.dime);
 			this.factory.getCashBox().count(Coin.nickel);
 		}
-		
+
 		
 		this.factory.getDisplay().info("Mixing ingredients.");
 		this.factory.getCoffeePowderDispenser().release(0.1);
