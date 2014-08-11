@@ -2,6 +2,7 @@ package br.ufpb.dce.aps.coffeemachine;
 
 import br.ufpb.dce.aps.coffeemachine.impl.MyCoffeeMachine;
 
+
 public class MyCoffeeMachineTest extends CoffeeMachineTest{
 
 	
