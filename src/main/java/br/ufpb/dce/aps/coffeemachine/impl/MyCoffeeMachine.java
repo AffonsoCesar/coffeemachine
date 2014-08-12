@@ -102,6 +102,13 @@ public class MyCoffeeMachine implements CoffeeMachine {
 			
 			this.gerente.moedaReversa(this.gerente.calcTroco());
 			
+			if (drink == Drink.WHITE) {
+				if (this.gerente.semTrocoTrivial(gerente.calcTroco()) == null) {
+					this.gerente.devolverMoeda();
+					return;
+				}
+			}
+			
 			this.factory.getDisplay().info("Mixing ingredients.");
 			this.factory.getCoffeePowderDispenser().release(0.1);
 			this.factory.getWaterDispenser().release(0.1);

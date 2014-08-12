@@ -3,6 +3,7 @@ package br.ufpb.dce.aps.coffeemachine.impl;
 import java.util.ArrayList;
 
 import br.ufpb.dce.aps.coffeemachine.CashBox;
+import br.ufpb.dce.aps.coffeemachine.CoffeeMachineException;
 import br.ufpb.dce.aps.coffeemachine.Coin;
 import br.ufpb.dce.aps.coffeemachine.ComponentsFactory;
 
@@ -85,5 +86,20 @@ public class GerenteCoin {
 			}
 		}
 		return newTroco == 0;
+	}
+	
+	public int [] semTrocoTrivial (int change) {
+		int [] changePlan = new int[6];
+		int i=0;
+		for (Coin r : Coin.reverse()) {
+			if (r.getValue() <= change && cashBox.count(r) > 0) {
+				while (r .getValue() <= change) {
+					change -= r.getValue();
+					changePlan[i]++;
+				}
+			}
+		}		
+		
+		return changePlan;
 	}
 }
