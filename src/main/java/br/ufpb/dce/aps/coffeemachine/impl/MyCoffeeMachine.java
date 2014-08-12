@@ -60,7 +60,7 @@ public class MyCoffeeMachine implements CoffeeMachine {
 			this.gerente.devolverMoeda();	
 			return;
 		}
-
+		
 		if(!this.factory.getCupDispenser().contains(1)) {
 			this.factory.getDisplay().warn("Out of Cup");
 			this.gerente.devolverMoeda();
@@ -93,8 +93,15 @@ public class MyCoffeeMachine implements CoffeeMachine {
 				this.factory.getCreamerDispenser().contains(0.1);
 				this.factory.getSugarDispenser().contains(0.1);	
 			}
+			
+			if(!this.gerente.semTroco(gerente.calcTroco())){
+				this.factory.getDisplay().warn("I do not have enought change"); 
+				this.gerente.devolverMoeda();
+				return;
+			}
+			
 			this.gerente.moedaReversa(this.gerente.calcTroco());
-		
+			
 			this.factory.getDisplay().info("Mixing ingredients.");
 			this.factory.getCoffeePowderDispenser().release(0.1);
 			this.factory.getWaterDispenser().release(0.1);

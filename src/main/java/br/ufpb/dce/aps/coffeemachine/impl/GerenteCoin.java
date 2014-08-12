@@ -70,7 +70,6 @@ public class GerenteCoin {
 		ArrayList<Coin> listAuxiliar = new ArrayList<Coin>();
 		for (int c = 0; c < Coin.reverse().length; c++){
 			while (Coin.reverse()[c].getValue() <= valor){
-				cashBox.count(Coin.reverse()[c]);
 				listAuxiliar.add(Coin.reverse()[c]);
 				valor = valor - Coin.reverse()[c].getValue();
 			}
@@ -78,4 +77,13 @@ public class GerenteCoin {
 		return listAuxiliar;
 	}
 	
+	public boolean semTroco (int newTroco) {
+		Coin[] inv = Coin.reverse();
+		for (Coin c : inv) {
+			if (c.getValue() <= newTroco && cashBox.count(c) > 0) {
+				newTroco -= c.getValue();
+			}
+		}
+		return newTroco == 0;
+	}
 }
