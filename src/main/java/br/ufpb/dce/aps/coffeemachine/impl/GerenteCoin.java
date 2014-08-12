@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import br.ufpb.dce.aps.coffeemachine.CashBox;
 import br.ufpb.dce.aps.coffeemachine.Coin;
 import br.ufpb.dce.aps.coffeemachine.ComponentsFactory;
-import br.ufpb.dce.aps.coffeemachine.Display;
 
 public class GerenteCoin {
 	
@@ -13,13 +12,11 @@ public class GerenteCoin {
 	private final int drink = 35;
 	public Coin[] coins;
 	public CashBox cashBox;
-	public Display display;
 	
-	
-	public GerenteCoin(ComponentsFactory factory) {
-		this.cashBox = factory.getCashBox();
-		this.factory = factory;
-	}
+	//public GerenteCoin(ComponentsFactory factory) {
+		//this.cashBox = factory.getCashBox();
+		//this.factory = factory;
+	//}
 	
 	public GerenteCoin() {
 	 this.coins = new Coin[50];	

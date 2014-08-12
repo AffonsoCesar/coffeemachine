@@ -11,9 +11,7 @@ public class MyCoffeeMachine implements CoffeeMachine {
 
 	private ComponentsFactory factory;
 	private Dispenser cupDispenser;
-	private int valor =0; 
- 	private int decCent = 0;
- 	private int dolar = 0;
+	private int valor =0, decCent, dolar; 
  	
  	GerenteCoin gerente = new GerenteCoin();
  	
@@ -21,26 +19,21 @@ public class MyCoffeeMachine implements CoffeeMachine {
  	public Dispenser getCupDispenser() {
 		return cupDispenser;
 	}
-
-	private void setCupDispenser(Dispenser cupDispenser) {
-		this.cupDispenser = cupDispenser;
-	}
  	
  	public MyCoffeeMachine(ComponentsFactory factory) {
-		this.gerente.factory = factory;
  		this.factory = factory;
- 		this.gerente.coins = new Coin[50];
-		
-		factory.getDisplay().info("Insert coins and select a drink!");
-		setCupDispenser(factory.getCupDispenser());
+ 		//this.gerente.coins = new Coin[50]; //ISSO AQUI ESTÁ SEM SER USADO!
+ 		this.gerente.factory = factory;
+		this.cupDispenser = factory.getCupDispenser(); // ATENÇÂO: o setCupDispenser foi trocado por isso
 		this.gerente.cashBox = factory.getCashBox();
+		this.factory.getDisplay().info("Insert coins and select a drink!");
+		
 	}
 
 	public void insertCoin(Coin coin) throws CoffeeMachineException {
 		
 		try {
 			this.gerente.coins[++valor] = coin;
-			//coins[++valor] = coin;
 			dolar = dolar + coin.getValue() / 100;
 			decCent = decCent + coin.getValue() % 100;
 			factory.getDisplay().info ("Total: US$ "+dolar+"." + decCent);
@@ -62,6 +55,11 @@ public class MyCoffeeMachine implements CoffeeMachine {
 
 	public void select(Drink drink) {
 		
+		if(gerente.calcTroco()< 0){
+			this.factory.getDisplay().warn("Please, insert enought money");
+			this.gerente.devolverMoeda();	
+			return;
+		}
 
 		if(!this.factory.getCupDispenser().contains(1)) {
 			this.factory.getDisplay().warn("Out of Cup");
