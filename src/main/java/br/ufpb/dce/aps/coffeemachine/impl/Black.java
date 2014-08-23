@@ -1,0 +1,25 @@
+package br.ufpb.dce.aps.coffeemachine.impl;
+
+import br.ufpb.dce.aps.coffeemachine.ComponentsFactory;
+import br.ufpb.dce.aps.coffeemachine.Drink;
+
+public class Black extends Drinks {
+	
+	public Drink drink;
+	public ComponentsFactory factory;
+	
+	public Black (Drink drink, ComponentsFactory factory) {
+		this.factory = factory;
+		if (drink == Drink.BLACK) {
+			this.drink = Drink.BLACK;
+		} else {
+			this.drink = Drink.BLACK_SUGAR;
+		}
+	}
+
+	public void release() {
+		if (drink == Drink.BLACK_SUGAR) {
+			this.factory.getSugarDispenser().release(super.anyDouble);
+		}
+	}
+}
