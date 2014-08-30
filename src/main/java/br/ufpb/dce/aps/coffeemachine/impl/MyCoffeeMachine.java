@@ -9,12 +9,12 @@ import br.ufpb.dce.aps.coffeemachine.Coin;
 public class MyCoffeeMachine implements CoffeeMachine {
 
 	private ComponentsFactory factory;
-	private GerenteCoin gerenciadorC;
-	private GerenteMachine gerenciadorM;
+	private GerenteCoin gerenciadorC =  new GerenteCoin(); 
+	private GerenteMachine gerenciadorM = new GerenteMachine();
 
 
 	public void insertCoin(Coin coin) {
-		gerenciadorC.insertCoin(factory, coin);
+		gerenciadorC.insertCoin(factory, coin, gerenciadorM.getModo());
 	}
 
 	public void cancel() throws CoffeeMachineException {
@@ -27,13 +27,10 @@ public class MyCoffeeMachine implements CoffeeMachine {
 	
 	public void setFactory(ComponentsFactory factory) {
 		this.factory = factory;
-		gerenciadorC = new GerenteCoin();
-		gerenciadorM = new GerenteMachine();
-		factory.getDisplay().info("Insert coins or place your badge in the reader. And select a drink!");
+		gerenciadorM.iniciarComMoedas(factory);
 	}
 		
 	public void readBadge(int badgeCode) {
-		factory.getDisplay().info("Badge read.");
-		gerenciadorC.setModo("Cracha");
+		gerenciadorM.iniciarComCracha(factory, gerenciadorC, badgeCode);
 	}
 }

@@ -6,6 +6,7 @@ import br.ufpb.dce.aps.coffeemachine.ComponentsFactory;
 public class GerenteMachine {
 	
 	private GerenteDrink gerenteDrink = new GerenteDrink();
+	private static String type = "";
 	
 	public void inicioPedido(ComponentsFactory factory, GerenteCoin gerenteCoin, Drink drink) {
 		
@@ -38,6 +39,29 @@ public class GerenteMachine {
 				}
 
 			factory.getDisplay().info("Insert coins or place your badge in the reader. And select a drink!");
+			GerenteMachine.setModo(type);
 			gerenteCoin.clear();
 		}
+	public void iniciarComCracha(ComponentsFactory factory, GerenteCoin gerenteCoin, int Cracha) {
+				if(gerenteCoin.getTotal()>0){
+					factory.getDisplay().warn("You can not read badge after inserting coins");
+					return;
+				}
+				else{
+					factory.getDisplay().info("Badge read.");
+					GerenteMachine.setModo("Cracha");
+				}
+			}
+	
+	public void iniciarComMoedas(ComponentsFactory factory) {
+				factory.getDisplay().info("Insert coins or place your badge in the reader. And select a drink!");
+				GerenteMachine.setModo("Moedas");
+		 	}
+			public static void setModo(String newType) {
+				type = newType;
+			}
+			
+			public String getModo(){
+				return type;
+			}
 }
