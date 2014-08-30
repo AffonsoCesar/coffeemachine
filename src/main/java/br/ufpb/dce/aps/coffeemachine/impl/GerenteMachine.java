@@ -8,12 +8,12 @@ public class GerenteMachine {
 	private GerenteDrink gerenteDrink = new GerenteDrink();
 	
 	public void inicioPedido(ComponentsFactory factory, GerenteCoin gerenteCoin, Drink drink) {
+		
+			gerenteDrink.iniciarDrink(drink,factory);
 			
 			if(!gerenteCoin.checkCoin(factory, this.gerenteDrink.getValor())){
 				return;
 			}
-			
-			gerenteDrink.iniciarDrink(drink,factory);
 
 			if (!gerenteDrink.checkIngredients(drink, factory)) {
 				gerenteCoin.returnCoin(factory, false);

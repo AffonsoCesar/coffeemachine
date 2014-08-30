@@ -15,11 +15,13 @@ public class White extends Drinks {
 		}
 	}
 
-	public void release() {
+	public void release(ComponentsFactory factory) {
 		factory.getWaterDispenser().release(80);
 		factory.getCreamerDispenser().release(20);
-		if (drink == Drink.WHITE_SUGAR) {
+		if (this.drink == Drink.WHITE_SUGAR) {
 			factory.getSugarDispenser().release(5);
 		}
+		factory.getDisplay().info("Releasing drink.");
+		factory.getCupDispenser().release(1);
 	}
 }
