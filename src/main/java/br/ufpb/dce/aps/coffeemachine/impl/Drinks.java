@@ -1,8 +1,8 @@
 package br.ufpb.dce.aps.coffeemachine.impl;
 
-import static org.mockito.Matchers.anyDouble;
 import br.ufpb.dce.aps.coffeemachine.ComponentsFactory;
 import br.ufpb.dce.aps.coffeemachine.Drink;
+import static org.mockito.Matchers.anyDouble;
 
 public abstract class Drinks {
 

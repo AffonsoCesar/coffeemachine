@@ -23,8 +23,8 @@ public class GerenteCoin {
 		try {
 			total += coin.getValue();
 			aux.add(coin);
-			dolar = dolar + total / 100;
-			decCent = decCent + total % 100;
+			dolar = total / 100;
+			decCent = total % 100;
 			factory.getDisplay().info ("Total: US$ "+dolar+"." + decCent);
 		} 
 		catch (NullPointerException e) {
@@ -34,7 +34,7 @@ public class GerenteCoin {
 
 	public void cancel(ComponentsFactory factory) throws CoffeeMachineException {
 		
-		if (dolar  == 0 & decCent == 0) {
+		if (total == 0) {
 			throw new CoffeeMachineException("Nenhuma Moeda Inserida na Máquina!");
 		}
 		returnCoin(factory, true);
@@ -44,6 +44,7 @@ public class GerenteCoin {
 		if (confirm) {
 			factory.getDisplay().warn("Cancelling drink. Please, get your coins.");
 		}
+		
 		for (Coin x : this.rev) {
 			for (Coin aux : this.aux) {
 				if (aux == x) {

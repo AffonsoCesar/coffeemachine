@@ -2,7 +2,6 @@ package br.ufpb.dce.aps.coffeemachine.impl;
 
 import br.ufpb.dce.aps.coffeemachine.ComponentsFactory;
 import br.ufpb.dce.aps.coffeemachine.Drink;
-import static org.mockito.Matchers.anyDouble;
 
 public class GerenteDrink {
 
@@ -24,16 +23,16 @@ public class GerenteDrink {
 			factory.getDisplay().warn("Out of Cup");
 			return false;
 		}
-		else if (!factory.getWaterDispenser().contains(anyDouble())) {
+		if (!factory.getWaterDispenser().contains(0.1)) {
 			factory.getDisplay().warn("Out of Water");
 			return false;
 		}
-		else if (!factory.getCoffeePowderDispenser().contains(anyDouble())) {
+		if (!factory.getCoffeePowderDispenser().contains(0.1)) {
 			factory.getDisplay().warn("Out of Coffee Powder");
 			return false;
 		}
-		else if (d.getDrink() == Drink.WHITE || d.getDrink() == Drink.WHITE_SUGAR){
-			if (!factory.getCreamerDispenser().contains(anyDouble())){
+		if (d.getDrink() == Drink.WHITE || d.getDrink() == Drink.WHITE_SUGAR){
+			if (!factory.getCreamerDispenser().contains(0.1)){
 				return false;
 			}
 		}
@@ -42,7 +41,7 @@ public class GerenteDrink {
 	
 	public boolean verifySugar(ComponentsFactory factory){
 		if(d.getDrink() == Drink.BLACK_SUGAR || d.getDrink() == Drink.WHITE_SUGAR){
-			if (!factory.getSugarDispenser().contains(anyDouble())) {
+			if (!factory.getSugarDispenser().contains(0.1)) {
 				factory.getDisplay().warn("Out of Sugar");
 				return false;
 			}
@@ -52,8 +51,8 @@ public class GerenteDrink {
 	
 	public void mixIngredients (ComponentsFactory factory){
 		factory.getDisplay().info("Mixing ingredients.");
-		factory.getCoffeePowderDispenser().release(anyDouble());
-		factory.getWaterDispenser().release(anyDouble());
+		factory.getCoffeePowderDispenser().release(0.1);
+		factory.getWaterDispenser().release(0.1);
 	}
 	
 	public void release(ComponentsFactory factory){

@@ -5,8 +5,6 @@ import br.ufpb.dce.aps.coffeemachine.Drink;
 
 public class White extends Drinks {
 	
-	public Drink drink;
-	public ComponentsFactory factory;
 	
 	public White (Drink drink, ComponentsFactory factory) {
 		this.factory = factory;
