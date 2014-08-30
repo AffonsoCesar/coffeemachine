@@ -75,7 +75,7 @@ public class GerenteDrink {
 		return true;
 	}
 	
-	public void mixIngredients (ComponentsFactory factory){
+	public void mixIngredients (Drink drink, ComponentsFactory factory){
 		factory.getDisplay().info("Mixing ingredients.");
 		if (d.getDrink() == Drink.BOUILLON) {
 			factory.getBouillonDispenser().release(10);
@@ -87,7 +87,7 @@ public class GerenteDrink {
 	
 	public void release(ComponentsFactory factory){
 		d.release(factory);
-		factory.getDrinkDispenser().release(100);
+		factory.getDrinkDispenser().release(100.0);
 		factory.getDisplay().info("Please, take your drink.");
 		}
 	

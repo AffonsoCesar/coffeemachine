@@ -29,16 +29,15 @@ public class GerenteMachine {
 				return;
 			}
 
-			gerenteDrink.mixIngredients(factory);
+			gerenteDrink.mixIngredients(drink, factory);
 			gerenteDrink.release(factory);
 			
-			if(gerenteCoin.getTotal() % gerenteDrink.getValor() != 0 && gerenteCoin.getTotal() > gerenteDrink.getValor()) {
-				gerenteCoin.returnChange(factory, gerenteDrink.getValor());
-			}
-			
-			factory.getDisplay().info("Insert coins and select a drink!");
-			
-			gerenteCoin.clear();
-	}
 
+			if (gerenteCoin.getTotal() >= gerenteDrink.getValor()) {
+				gerenteCoin.returnChange(factory, gerenteDrink.getValor());
+				}
+
+			factory.getDisplay().info("Insert coins and select a drink!");
+			gerenteCoin.clear();
+		}
 }

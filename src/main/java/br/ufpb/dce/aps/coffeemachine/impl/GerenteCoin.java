@@ -72,6 +72,7 @@ public class GerenteCoin {
 	
 	public void clear() {
 		aux.clear();
+		total = 0;
 	}
 
 	public boolean checkCoin(ComponentsFactory factory, double valorDrink) {
@@ -84,13 +85,11 @@ public class GerenteCoin {
 	}
 
 	public boolean verifyChange(ComponentsFactory factory, double valorDrink) {
-		if (total % valorDrink != 0 && total > valorDrink) {
 			if (!calcTroco(factory, valorDrink)) {
 				factory.getDisplay().warn("I do not have enought change");
 				returnCoin(factory, false);
 				return false;
 			}
-		}
 		return true;
 	}
 	
