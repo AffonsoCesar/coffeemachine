@@ -42,7 +42,7 @@ public class GerenteDrink {
 	
 	public boolean verifySugar(ComponentsFactory factory){
 		if(d.getDrink() == Drink.BLACK_SUGAR || d.getDrink() == Drink.WHITE_SUGAR){
-			if (!factory.getSugarDispenser().contains(0.1)) {
+			if (!factory.getSugarDispenser().contains(5)) {
 				factory.getDisplay().warn("Out of Sugar");
 				return false;
 			}
