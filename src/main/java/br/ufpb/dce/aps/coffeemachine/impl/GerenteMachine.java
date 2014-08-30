@@ -15,7 +15,7 @@ public class GerenteMachine {
 			
 			gerenteDrink.iniciarDrink(drink,factory);
 
-			if (!gerenteDrink.checkIngredients(factory)) {
+			if (!gerenteDrink.checkIngredients(drink, factory)) {
 				gerenteCoin.returnCoin(factory, false);
 				return;
 			}
@@ -37,6 +37,7 @@ public class GerenteMachine {
 			}
 			
 			factory.getDisplay().info("Insert coins and select a drink!");
+			
 			gerenteCoin.clear();
 	}
 
