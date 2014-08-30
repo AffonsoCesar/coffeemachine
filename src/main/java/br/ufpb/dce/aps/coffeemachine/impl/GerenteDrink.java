@@ -23,11 +23,11 @@ public class GerenteDrink {
 			factory.getDisplay().warn("Out of Cup");
 			return false;
 		}
-		if (!factory.getWaterDispenser().contains(0.1)) {
+		if (!factory.getWaterDispenser().contains(100)) {
 			factory.getDisplay().warn("Out of Water");
 			return false;
 		}
-		if (!factory.getCoffeePowderDispenser().contains(0.1)) {
+		if (!factory.getCoffeePowderDispenser().contains(15)) {
 			factory.getDisplay().warn("Out of Coffee Powder");
 			return false;
 		}
@@ -52,15 +52,15 @@ public class GerenteDrink {
 	
 	public void mixIngredients (ComponentsFactory factory){
 		factory.getDisplay().info("Mixing ingredients.");
-		factory.getCoffeePowderDispenser().release(0.1);
-		factory.getWaterDispenser().release(0.1);
+		factory.getCoffeePowderDispenser().release(15);
+		factory.getWaterDispenser().release(100);
 	}
 	
 	public void release(ComponentsFactory factory){
 		d.release();
 		factory.getDisplay().info("Releasing drink.");
 		factory.getCupDispenser().release(1);
-		factory.getDrinkDispenser().release(1);
+		factory.getDrinkDispenser().release(100);
 		factory.getDisplay().info("Please, take your drink.");
 		}
 	
