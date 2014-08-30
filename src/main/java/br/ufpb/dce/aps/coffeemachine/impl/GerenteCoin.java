@@ -13,24 +13,31 @@ public class GerenteCoin {
 	private ArrayList<Coin> change = new ArrayList<Coin>();
 	private Coin[] rev = Coin.reverse();
 	private int total;
+	private String type = "vazio";
 	
 	public int getTotal() {
 		return total;
 	}
 	
 	public void insertCoin(ComponentsFactory factory, Coin coin)throws CoffeeMachineException {
-		
-		try {
-			total += coin.getValue();
-			aux.add(coin);
-			dolar = total / 100;
-			decCent = total % 100;
-			factory.getDisplay().info ("Total: US$ "+dolar+"." + decCent);
-		} 
-		catch (NullPointerException e) {
-			throw new CoffeeMachineException("A moeda inserida não é válida para esta máquina!");
+			if(this.type.equals("Cracha")){
+				factory.getDisplay().warn("You can not insert coins after reading badge");
+				releaseCoinCracha(factory, coin);
+				return;
+			}
+			else {
+					try {
+							total += coin.getValue();
+							aux.add(coin);
+							dolar = total / 100;
+							decCent = total % 100;
+							factory.getDisplay().info ("Total: US$ "+dolar+"." + decCent);
+					} 
+					catch (NullPointerException e) {
+						throw new CoffeeMachineException("A moeda inserida não é válida para esta máquina!");
+					}
+			}	
 		}
-	}
 
 	public void cancel(ComponentsFactory factory) throws CoffeeMachineException {
 		
@@ -101,5 +108,12 @@ public class GerenteCoin {
 				}
 			}
 		}
+	}
+	
+	public void setModo(String newType) {
+				this.type = newType;
+			}
+	private void releaseCoinCracha(ComponentsFactory factory, Coin coin) {
+		factory.getCashBox().release(coin);
 	}
 }

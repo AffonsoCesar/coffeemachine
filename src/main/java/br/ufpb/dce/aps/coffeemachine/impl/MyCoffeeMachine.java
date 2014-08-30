@@ -34,5 +34,6 @@ public class MyCoffeeMachine implements CoffeeMachine {
 		
 	public void readBadge(int badgeCode) {
 		factory.getDisplay().info("Badge read.");
+		gerenciadorC.setModo("Cracha");
 	}
 }
