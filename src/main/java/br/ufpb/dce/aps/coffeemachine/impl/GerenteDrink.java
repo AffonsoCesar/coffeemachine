@@ -33,6 +33,7 @@ public class GerenteDrink {
 		}
 		if (d.getDrink() == Drink.WHITE || d.getDrink() == Drink.WHITE_SUGAR){
 			if (!factory.getCreamerDispenser().contains(0.1)){
+				factory.getDisplay().warn("Out of Creamer");
 				return false;
 			}
 		}
