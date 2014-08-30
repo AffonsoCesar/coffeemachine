@@ -44,13 +44,14 @@ public class GerenteDrink {
 				return false;
 			}
 		}
-		if (bouillon > 0) {
-			if (!factory.getBouillonDispenser().contains(bouillon)) {
-				return false;
+			if (bouillon > 0) {
+				if (!factory.getBouillonDispenser().contains(bouillon)) {
+					factory.getDisplay().warn("Out of Bouillon Powder");
+					return false;
+				}
 			}
+			return true;
 		}
-		return true;
-	}
 	
 	public boolean checkIngredients(Drink drink, ComponentsFactory factory) {
 		if (d.getDrink() == Drink.BLACK || d.getDrink() == Drink.BLACK_SUGAR) {
