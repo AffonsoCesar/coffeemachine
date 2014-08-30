@@ -19,7 +19,7 @@ public class White extends Drinks {
 		factory.getWaterDispenser().release(80);
 		factory.getCreamerDispenser().release(20);
 		if (drink == Drink.WHITE_SUGAR) {
-			factory.getSugarDispenser().release(super.anyDouble);
+			factory.getSugarDispenser().release(5);
 		}
 	}
 }
