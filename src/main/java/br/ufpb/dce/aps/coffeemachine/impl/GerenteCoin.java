@@ -54,7 +54,7 @@ public class GerenteCoin {
 		}
 		total = 0;
 		clear();
-		factory.getDisplay().info("Insert coins and select a drink!");
+		factory.getDisplay().info("Insert coins or place your badge in the reader. And select a drink!");
 	}
 
 	public boolean calcTroco(ComponentsFactory factory, double valorDrink) {

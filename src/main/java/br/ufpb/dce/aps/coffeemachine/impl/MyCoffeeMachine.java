@@ -12,12 +12,6 @@ public class MyCoffeeMachine implements CoffeeMachine {
 	private GerenteCoin gerenciadorC;
 	private GerenteMachine gerenciadorM;
 
-	public MyCoffeeMachine(ComponentsFactory factory) {
-		this.factory = factory;
-		gerenciadorC = new GerenteCoin();
-		gerenciadorM = new GerenteMachine();
-		factory.getDisplay().info("Insert coins and select a drink!");
-	}
 
 	public void insertCoin(Coin coin) {
 		gerenciadorC.insertCoin(factory, coin);
@@ -29,5 +23,16 @@ public class MyCoffeeMachine implements CoffeeMachine {
 		
 	public void select(Drink drink) {
 		gerenciadorM.inicioPedido(factory, gerenciadorC, drink);
+	}
+	
+	public void setFactory(ComponentsFactory factory) {
+		this.factory = factory;
+		gerenciadorC = new GerenteCoin();
+		gerenciadorM = new GerenteMachine();
+		factory.getDisplay().info("Insert coins or place your badge in the reader. And select a drink!");
+	}
+		
+	public void readBadge(int badgeCode) {
+		factory.getDisplay().info("Badge read.");
 	}
 }

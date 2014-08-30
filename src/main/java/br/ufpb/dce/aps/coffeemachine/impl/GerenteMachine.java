@@ -37,7 +37,7 @@ public class GerenteMachine {
 				gerenteCoin.returnChange(factory, gerenteDrink.getValor());
 				}
 
-			factory.getDisplay().info("Insert coins and select a drink!");
+			factory.getDisplay().info("Insert coins or place your badge in the reader. And select a drink!");
 			gerenteCoin.clear();
 		}
 }
