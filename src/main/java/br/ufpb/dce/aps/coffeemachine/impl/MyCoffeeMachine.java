@@ -33,4 +33,5 @@ public class MyCoffeeMachine implements CoffeeMachine {
 	public void readBadge(int badgeCode) {
 		gerenciadorM.iniciarComCracha(factory, gerenciadorC, badgeCode);
 	}
+	
 }

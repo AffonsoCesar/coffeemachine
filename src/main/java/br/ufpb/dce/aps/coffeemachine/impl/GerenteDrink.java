@@ -5,8 +5,8 @@ import br.ufpb.dce.aps.coffeemachine.Drink;
 
 public class GerenteDrink {
 
-	private double valor = 35;
-	private double valorCaldo = 25;
+	private int valor = 35;
+	private int valorCaldo = 25;
 	private Drinks d;
 	
 	public void iniciarDrink (Drink drink, ComponentsFactory factory){
@@ -92,7 +92,7 @@ public class GerenteDrink {
 		factory.getDisplay().info("Please, take your drink.");
 		}
 	
-	public double getValor(){
+	public int getValor(){
 		return this.valor;
 	}
 	
